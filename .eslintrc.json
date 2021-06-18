@@ -9,7 +9,11 @@
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-param-reassign": ["error", { "props": false }],
+    "import/named": "off",
+    "import/no-dynamic-require": "off",
+    "global-require": "off"
   },
   "plugins": ["prettier"]
 }
