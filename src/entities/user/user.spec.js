@@ -11,6 +11,7 @@ describe('User entity', () => {
         getPassword: expect.any(Function),
         getName: expect.any(Function),
         getEmail: expect.any(Function),
+        getRole: expect.any(Function),
         getPicture: expect.any(Function),
         spread: expect.any(Function),
       })
@@ -26,6 +27,7 @@ describe('User entity', () => {
         getPassword: expect.any(Function),
         getName: expect.any(Function),
         getEmail: expect.any(Function),
+        getRole: expect.any(Function),
         getPicture: expect.any(Function),
         spread: expect.any(Function),
       })
@@ -41,6 +43,7 @@ describe('User entity', () => {
         getPassword: expect.any(Function),
         getName: expect.any(Function),
         getEmail: expect.any(Function),
+        getRole: expect.any(Function),
         getPicture: expect.any(Function),
         spread: expect.any(Function),
       })
@@ -57,6 +60,7 @@ describe('User entity', () => {
         getPassword: expect.any(Function),
         getName: expect.any(Function),
         getEmail: expect.any(Function),
+        getRole: expect.any(Function),
         getPicture: expect.any(Function),
         spread: expect.any(Function),
       })
@@ -93,6 +97,12 @@ describe('User entity', () => {
     expect(() => createUser(invalidEmail)).toThrow(
       'User must have a valid email.'
     );
+
+    const invalidRole = createFakeUser({ role: 'InvalidRole' });
+
+    expect(() => createUser(invalidRole)).toThrow(
+      'User must have a valid role.'
+    );
   });
 
   it('Should throw errors on update', () => {
@@ -118,6 +128,12 @@ describe('User entity', () => {
 
     expect(() => updateUser(invalidEmail)).toThrow(
       'User must have a valid email.'
+    );
+
+    const invalidRole = createFakeUser({ role: 'InvalidRole' });
+
+    expect(() => updateUser(invalidRole)).toThrow(
+      'User must have a valid role.'
     );
   });
 });

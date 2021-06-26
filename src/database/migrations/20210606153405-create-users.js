@@ -25,6 +25,10 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       picture: {
         type: Sequelize.STRING,
         allowNull: true,

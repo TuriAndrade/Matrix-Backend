@@ -28,11 +28,19 @@ export default function buildUser({
       throw new Error('User must have a valid email.');
   }
 
-  function createUser({ username, password, name, email, picture }) {
+  function checkRole(role) {
+    const allowedRoles = ['student', 'admin', 'fullAdmin'];
+
+    if (!allowedRoles.includes(role))
+      throw new Error('User must have a valid role.');
+  }
+
+  function createUser({ username, password, name, email, role, picture }) {
     if (!username) throw new Error('User must have a username.');
     if (!password) throw new Error('User must have a password.');
     if (!name) throw new Error('User must have a name.');
     if (!email) throw new Error('User must have an email.');
+    if (!role) throw new Error('User must have a role.');
     if (picture !== undefined && !picture)
       throw new Error('User must have a valid picture.');
 
@@ -40,24 +48,27 @@ export default function buildUser({
     checkPassword(password);
     checkName(name);
     checkEmail(email);
+    checkRole(role);
 
     return Object.freeze({
       getUsername: () => username,
       getPassword: () => password,
       getName: () => name,
       getEmail: () => email,
+      getRole: () => role,
       getPicture: () => picture,
       spread: () => ({
         username,
         password,
         name,
         email,
+        role,
         picture,
       }),
     });
   }
 
-  function updateUser({ username, password, name, email, picture }) {
+  function updateUser({ username, password, name, email, role, picture }) {
     if (username !== undefined) {
       if (!username) throw new Error('User must have a valid username.');
       else checkUsername(username);
@@ -78,6 +89,11 @@ export default function buildUser({
       else checkEmail(email);
     }
 
+    if (role !== undefined) {
+      if (!role) throw new Error('User must have a valid role.');
+      else checkRole(role);
+    }
+
     if (picture !== undefined && picture !== null) {
       if (!picture) throw new Error('User must have a valid picture.');
     }
@@ -87,12 +103,14 @@ export default function buildUser({
       getPassword: () => password,
       getName: () => name,
       getEmail: () => email,
+      getRole: () => role,
       getPicture: () => picture,
       spread: () => ({
         username,
         password,
         name,
         email,
+        role,
         picture,
       }),
     });
