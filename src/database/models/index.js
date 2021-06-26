@@ -12,7 +12,7 @@ fs.readdirSync(__dirname)
     (file) =>
       file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
   )
-  .forEach(async (file) => {
+  .forEach((file) => {
     const model = require(path.join(__dirname, file))(
       sequelize,
       Sequelize.DataTypes

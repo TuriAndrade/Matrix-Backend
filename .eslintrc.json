@@ -1,7 +1,8 @@
 {
   "env": {
     "es2021": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": ["airbnb-base", "prettier"],
   "parserOptions": {
@@ -11,9 +12,9 @@
   "rules": {
     "prettier/prettier": "error",
     "no-param-reassign": ["error", { "props": false }],
-    "import/named": "off",
     "import/no-dynamic-require": "off",
-    "global-require": "off"
+    "global-require": "off",
+    "import/named": "off"
   },
   "plugins": ["prettier"]
 }

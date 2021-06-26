@@ -7,7 +7,10 @@
     "start": "SET NODE_ENV=prod&node build/index.js",
     "build": "sucrase ./src -d ./build --transforms imports",
     "dev": "SET NODE_ENV=dev&nodemon -r sucrase/register src/index.js",
-    "format": "prettier --write \"{,!(node_modules)/**/}*.{js,json}\""
+    "format": "prettier --write \"{,!(node_modules)/**/}*.{js,json}\"",
+    "pretest": "SET NODE_ENV=test&sequelize db:migrate",
+    "test": "SET NODE_ENV=test&jest",
+    "posttest": "SET NODE_ENV=test&sequelize db:migrate:undo:all"
   },
   "author": "",
   "license": "ISC",
@@ -20,14 +23,21 @@
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-jest": "^27.0.5",
     "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-prettier": "^3.4.0",
+    "faker": "^5.5.3",
+    "jest": "^27.0.5",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.0",
+    "randexp": "^0.5.3",
     "sequelize-cli": "^6.2.0",
+    "sqlite3": "^5.0.2",
     "sucrase": "^3.18.1"
   }
 }

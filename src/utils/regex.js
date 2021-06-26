@@ -3,7 +3,7 @@ export function usernameRegexTest(username) {
 }
 
 export function nameRegexTest(name) {
-  return /^[A-Za-z]+$/.test(name);
+  return /^[a-zA-Z ,.'-]+$/.test(name);
 }
 
 export function emailRegexTest(email) {
