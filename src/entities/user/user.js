@@ -94,8 +94,8 @@ export default function buildUser({
       else checkRole(role);
     }
 
-    if (picture !== undefined && picture !== null) {
-      if (!picture) throw new Error('User must have a valid picture.');
+    if (picture !== undefined && picture !== null && !picture) {
+      throw new Error('User must have a valid picture.');
     }
 
     return Object.freeze({

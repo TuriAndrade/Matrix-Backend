@@ -14,7 +14,8 @@
     "no-param-reassign": ["error", { "props": false }],
     "import/no-dynamic-require": "off",
     "global-require": "off",
-    "import/named": "off"
+    "import/named": "off",
+    "no-plusplus": "off"
   },
   "plugins": ["prettier"]
 }
