@@ -1,7 +1,12 @@
-export default function buildStudyHistory() {
+export default function buildStudyHistory({ CustomError }) {
   function checkUserId(userId) {
     if (typeof userId !== 'number')
-      throw new Error('Study history must have a user id that is a number.');
+      throw new CustomError({
+        message: 'Study history must have a user id that is a number.',
+        code: 'invalid',
+        attr: 'userId',
+        entity: 'studyHistory',
+      });
   }
 
   function createStudyHistory({
@@ -11,9 +16,27 @@ export default function buildStudyHistory() {
     level,
     userId,
   }) {
-    if (!subject) throw new Error('Study history must have a subject.');
-    if (!discipline) throw new Error('Study history must have a discipline.');
-    if (!userId) throw new Error('Study history must have a user id.');
+    if (!subject)
+      throw new CustomError({
+        message: 'Study history must have a subject.',
+        code: 'undefined',
+        attr: 'subject',
+        entity: 'studyHistory',
+      });
+    if (!discipline)
+      throw new CustomError({
+        message: 'Study history must have a discipline.',
+        code: 'undefined',
+        attr: 'discipline',
+        entity: 'studyHistory',
+      });
+    if (!userId)
+      throw new CustomError({
+        message: 'Study history must have a user id.',
+        code: 'undefined',
+        attr: 'userId',
+        entity: 'studyHistory',
+      });
 
     checkUserId(userId);
 
@@ -41,15 +64,31 @@ export default function buildStudyHistory() {
     userId,
   }) {
     if (subject !== undefined && !subject) {
-      throw new Error('Study history must have a valid subject.');
+      throw new CustomError({
+        message: 'Study history must have a valid subject.',
+        code: 'invalid',
+        attr: 'subject',
+        entity: 'studyHistory',
+      });
     }
 
     if (discipline !== undefined && !discipline) {
-      throw new Error('Study history must have a valid discipline.');
+      throw new CustomError({
+        message: 'Study history must have a valid discipline.',
+        code: 'invalid',
+        attr: 'discipline',
+        entity: 'studyHistory',
+      });
     }
 
     if (userId !== undefined) {
-      if (!userId) throw new Error('Study history must have a valid user id.');
+      if (!userId)
+        throw new CustomError({
+          message: 'Study history must have a valid user id.',
+          code: 'invalid',
+          attr: 'userId',
+          entity: 'studyHistory',
+        });
       else checkUserId(userId);
     }
 
