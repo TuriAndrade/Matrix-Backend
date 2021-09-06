@@ -13,7 +13,7 @@ export default function buildStudyHistory({ CustomError }) {
     subject,
     hasStudied,
     discipline,
-    level,
+    level = null,
     userId,
   }) {
     if (!subject)
@@ -28,6 +28,13 @@ export default function buildStudyHistory({ CustomError }) {
         message: 'Study history must have a discipline.',
         code: 'undefined',
         attr: 'discipline',
+        entity: 'studyHistory',
+      });
+    if (level !== null && !level)
+      throw new CustomError({
+        message: 'Study history must have a valid level.',
+        code: 'invalid',
+        attr: 'level',
         entity: 'studyHistory',
       });
     if (!userId)
@@ -77,6 +84,15 @@ export default function buildStudyHistory({ CustomError }) {
         message: 'Study history must have a valid discipline.',
         code: 'invalid',
         attr: 'discipline',
+        entity: 'studyHistory',
+      });
+    }
+
+    if (level !== undefined && level !== null && !level) {
+      throw new CustomError({
+        message: 'Study history must have a valid level.',
+        code: 'invalid',
+        attr: 'level',
         entity: 'studyHistory',
       });
     }

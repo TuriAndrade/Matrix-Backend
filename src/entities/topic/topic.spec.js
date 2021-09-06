@@ -14,7 +14,7 @@ describe('Topic entity', () => {
     );
   });
 
-  it('Should update user', () => {
+  it('Should update topic', () => {
     const updatedTopic = updateTopic(createFakeTopic());
 
     expect(updatedTopic).toEqual(
@@ -26,7 +26,7 @@ describe('Topic entity', () => {
     );
   });
 
-  it('Should update only one/some user attributes', () => {
+  it('Should update only one/some topic attributes', () => {
     const updatedName = updateTopic({ name: 'new_name_for_topic' });
 
     expect(updatedName).toEqual(

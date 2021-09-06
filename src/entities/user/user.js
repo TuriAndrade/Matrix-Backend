@@ -77,7 +77,14 @@ export default function buildUser({
       });
   }
 
-  function createUser({ username, password, name, email, role, picture }) {
+  function createUser({
+    username,
+    password,
+    name,
+    email,
+    role,
+    picture = null,
+  }) {
     if (!username)
       throw new CustomError({
         message: 'User must have a username.',
@@ -113,7 +120,7 @@ export default function buildUser({
         attr: 'role',
         entity: 'user',
       });
-    if (picture !== undefined && !picture)
+    if (picture !== null && !picture)
       throw new CustomError({
         message: 'User must have a valid picture.',
         code: 'invalid',
