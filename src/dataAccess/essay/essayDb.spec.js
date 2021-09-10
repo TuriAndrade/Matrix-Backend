@@ -1,4 +1,4 @@
-import createFakEssay from '../../../__tests__/fixtures/fakeEssay';
+import createFakeEssay from '../../../__tests__/fixtures/fakeEssay';
 import truncate from '../../../__tests__/utils/truncate';
 import { insertUser, insertTopic } from '../../../__tests__/utils/seed';
 import essayDb from './index';
@@ -14,7 +14,7 @@ describe('Essay db', () => {
     const topic = await insertTopic();
 
     const essay = createEssay(
-      createFakEssay({ userId: user.id, topicId: topic.id })
+      createFakeEssay({ userId: user.id, topicId: topic.id })
     );
 
     const createdEssay = await essayDb.create(essay.spread());
@@ -27,13 +27,13 @@ describe('Essay db', () => {
     const topic = await insertTopic();
 
     const essay = createEssay(
-      createFakEssay({ userId: user.id, topicId: topic.id })
+      createFakeEssay({ userId: user.id, topicId: topic.id })
     );
 
     const createdEssay = await essayDb.create(essay.spread());
 
     const update = updateEssay(
-      createFakEssay({ userId: user.id, topicId: topic.id })
+      createFakeEssay({ userId: user.id, topicId: topic.id })
     );
 
     const [numberOfUpdatedEssays] = await essayDb.updateById({
@@ -52,7 +52,7 @@ describe('Essay db', () => {
 
     for (let i = 0; i < 10; i++) {
       essays.push(
-        createEssay(createFakEssay({ userId: user.id, topicId: topic.id }))
+        createEssay(createFakeEssay({ userId: user.id, topicId: topic.id }))
       );
     }
 
@@ -62,13 +62,13 @@ describe('Essay db', () => {
       essays.map((essay) => essayDb.create(essay.spread()))
     ).then((result) => result.forEach((entry) => essayIds.push(entry.id)));
 
-    const createdEssays = await essayDb.findByUserId({
+    const foundEssays = await essayDb.findByUserId({
       userId: user.id,
     });
 
-    expect(createdEssays.length).toBe(10);
+    expect(foundEssays.length).toBe(10);
 
-    createdEssays.forEach((essay) => {
+    foundEssays.forEach((essay) => {
       expect(essayIds).toContain(essay.id);
     });
   });
@@ -81,7 +81,7 @@ describe('Essay db', () => {
 
     for (let i = 0; i < 10; i++) {
       essays.push(
-        createEssay(createFakEssay({ userId: user.id, topicId: topic.id }))
+        createEssay(createFakeEssay({ userId: user.id, topicId: topic.id }))
       );
     }
 
@@ -91,13 +91,13 @@ describe('Essay db', () => {
       essays.map((essay) => essayDb.create(essay.spread()))
     ).then((result) => result.forEach((entry) => essayIds.push(entry.id)));
 
-    const createdEssays = await essayDb.findByTopicId({
+    const foundEssays = await essayDb.findByTopicId({
       topicId: topic.id,
     });
 
-    expect(createdEssays.length).toBe(10);
+    expect(foundEssays.length).toBe(10);
 
-    createdEssays.forEach((essay) => {
+    foundEssays.forEach((essay) => {
       expect(essayIds).toContain(essay.id);
     });
   });
@@ -110,7 +110,7 @@ describe('Essay db', () => {
 
     for (let i = 0; i < 10; i++) {
       essays.push(
-        createEssay(createFakEssay({ userId: user.id, topicId: topic.id }))
+        createEssay(createFakeEssay({ userId: user.id, topicId: topic.id }))
       );
     }
 
@@ -120,14 +120,14 @@ describe('Essay db', () => {
       essays.map((essay) => essayDb.create(essay.spread()))
     ).then((result) => result.forEach((entry) => essayIds.push(entry.id)));
 
-    const createdEssays = await essayDb.findByUserAndTopicIds({
+    const foundEssays = await essayDb.findByUserAndTopicIds({
       userId: user.id,
       topicId: topic.id,
     });
 
-    expect(createdEssays.length).toBe(10);
+    expect(foundEssays.length).toBe(10);
 
-    createdEssays.forEach((essay) => {
+    foundEssays.forEach((essay) => {
       expect(essayIds).toContain(essay.id);
     });
   });
@@ -137,7 +137,7 @@ describe('Essay db', () => {
     const topic = await insertTopic();
 
     const essay = createEssay(
-      createFakEssay({ userId: user.id, topicId: topic.id })
+      createFakeEssay({ userId: user.id, topicId: topic.id })
     );
 
     const createdEssay = await essayDb.create(essay.spread());
