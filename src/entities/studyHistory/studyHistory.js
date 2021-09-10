@@ -9,6 +9,27 @@ export default function buildStudyHistory({ CustomError }) {
       });
   }
 
+  function checkDiscipline(discipline) {
+    if (typeof discipline.length > 100)
+      throw new CustomError({
+        message:
+          'Study history must have a discipline with at most 100 characters',
+        code: 'big',
+        attr: 'discipline',
+        entity: 'studyHistory',
+      });
+  }
+
+  function checkLevel(level) {
+    if (typeof level.length > 100)
+      throw new CustomError({
+        message: 'Study history must have a level with at most 100 characters',
+        code: 'big',
+        attr: 'level',
+        entity: 'studyHistory',
+      });
+  }
+
   function createStudyHistory({
     subject,
     hasStudied,
@@ -45,6 +66,8 @@ export default function buildStudyHistory({ CustomError }) {
         entity: 'studyHistory',
       });
 
+    checkDiscipline(discipline);
+    if (level) checkLevel(level);
     checkUserId(userId);
 
     return Object.freeze({
@@ -79,22 +102,26 @@ export default function buildStudyHistory({ CustomError }) {
       });
     }
 
-    if (discipline !== undefined && !discipline) {
-      throw new CustomError({
-        message: 'Study history must have a valid discipline.',
-        code: 'invalid',
-        attr: 'discipline',
-        entity: 'studyHistory',
-      });
+    if (discipline !== undefined) {
+      if (!discipline)
+        throw new CustomError({
+          message: 'Study history must have a valid discipline.',
+          code: 'invalid',
+          attr: 'discipline',
+          entity: 'studyHistory',
+        });
+      else checkDiscipline(discipline);
     }
 
-    if (level !== undefined && level !== null && !level) {
-      throw new CustomError({
-        message: 'Study history must have a valid level.',
-        code: 'invalid',
-        attr: 'level',
-        entity: 'studyHistory',
-      });
+    if (level !== undefined && level !== null) {
+      if (!level)
+        throw new CustomError({
+          message: 'Study history must have a valid level.',
+          code: 'invalid',
+          attr: 'level',
+          entity: 'studyHistory',
+        });
+      else checkLevel(level);
     }
 
     if (userId !== undefined) {

@@ -38,7 +38,7 @@ describe('Topic db', () => {
 
     const foundTopic = await topicDb.findById({ id: createdTopic.id });
 
-    expect(foundTopic.name).toBe(createdTopic.name);
+    expect(foundTopic.link).toBe(createdTopic.link);
   });
 
   it('Should delete topic by id', async () => {
