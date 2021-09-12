@@ -137,13 +137,13 @@ export default function buildStudyHistory({ CustomError }) {
 
     return Object.freeze({
       getSubject: () => subject,
-      hasStudied: () => !!hasStudied,
+      hasStudied: () => (hasStudied === undefined ? undefined : !!hasStudied),
       getDiscipline: () => discipline,
       getLevel: () => level,
       getUserId: () => userId,
       spread: () => ({
         subject,
-        hasStudied: !!hasStudied,
+        hasStudied: hasStudied === undefined ? undefined : !!hasStudied,
         discipline,
         level,
         userId,

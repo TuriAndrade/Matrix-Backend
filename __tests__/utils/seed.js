@@ -1,6 +1,7 @@
 import createFakeUser from '../fixtures/fakeUser';
 import createFakeTopic from '../fixtures/fakeTopic';
 import createFakeMock from '../fixtures/fakeMock';
+import createFakeQuestion from '../fixtures/fakeQuestion';
 import db from '../../src/database/models';
 
 export async function insertUser() {
@@ -55,4 +56,22 @@ export async function insertMocks(n = 10) {
   }
 
   return Promise.all(mocks.map((mock) => db.Mock.create(mock)));
+}
+
+export async function insertQuestion() {
+  const question = createFakeQuestion();
+
+  const createdQuestion = await db.Question.create(question);
+
+  return createdQuestion;
+}
+
+export async function insertQuestions(n = 10) {
+  const questions = [];
+
+  for (let i = 0; i < n; i++) {
+    questions.push(createFakeQuestion());
+  }
+
+  return Promise.all(questions.map((question) => db.Question.create(question)));
 }

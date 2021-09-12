@@ -4,5 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     delta: DataTypes.JSON,
   });
 
+  Question.associate = (models) => {
+    Question.hasMany(models.Alternative);
+  };
+
   return Question;
 };

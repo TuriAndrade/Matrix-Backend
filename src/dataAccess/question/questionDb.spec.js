@@ -41,15 +41,15 @@ describe('Question db', () => {
     expect(foundQuestion.html).toBe(createdQuestion.html);
   });
 
-  it('Should delete mock by id', async () => {
-    const mock = createQuestion(createFakeQuestion());
+  it('Should delete question by id', async () => {
+    const question = createQuestion(createFakeQuestion());
 
-    const createdQuestion = await questionDb.create(mock.spread());
+    const createdQuestion = await questionDb.create(question.spread());
 
-    const numberOfDeletedMocks = await questionDb.deleteById({
+    const numberOfDeletedQuestions = await questionDb.deleteById({
       id: createdQuestion.id,
     });
 
-    expect(numberOfDeletedMocks).toBe(1);
+    expect(numberOfDeletedQuestions).toBe(1);
   });
 });
