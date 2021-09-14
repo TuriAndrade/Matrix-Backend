@@ -2,6 +2,7 @@ import createFakeUser from '../fixtures/fakeUser';
 import createFakeTopic from '../fixtures/fakeTopic';
 import createFakeMock from '../fixtures/fakeMock';
 import createFakeQuestion from '../fixtures/fakeQuestion';
+import createFakeUserMock from '../fixtures/fakeUserMock';
 import db from '../../src/database/models';
 
 export async function insertUser() {
@@ -74,4 +75,30 @@ export async function insertQuestions(n = 10) {
   }
 
   return Promise.all(questions.map((question) => db.Question.create(question)));
+}
+
+export async function insertUserMock() {
+  const user = await insertUser();
+  const mock = await insertMock();
+
+  const userMock = createFakeUserMock({ userId: user.id, mockId: mock.id });
+
+  const createdUserMock = await db.UserMock.create(userMock);
+
+  return createdUserMock;
+}
+
+export async function insertUserMocks(n = 10) {
+  const users = await insertUsers(n);
+  const mocks = await insertMocks(n);
+
+  const userMocks = [];
+
+  for (let i = 0; i < n; i++) {
+    userMocks.push(
+      createFakeUserMock({ userId: users[i].id, mockId: mocks[i].id })
+    );
+  }
+
+  return Promise.all(userMocks.map((userMock) => db.UserMock.create(userMock)));
 }

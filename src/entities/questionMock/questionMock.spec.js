@@ -1,9 +1,9 @@
-import createdFakeQuestionMock from '../../../__tests__/fixtures/fakeQuestionMock';
+import createFakeQuestionMock from '../../../__tests__/fixtures/fakeQuestionMock';
 import { createQuestionMock, updateQuestionMock } from './index';
 
 describe('Question mock entity', () => {
   it('Should create question mock', () => {
-    const questionMock = createQuestionMock(createdFakeQuestionMock());
+    const questionMock = createQuestionMock(createFakeQuestionMock());
 
     expect(questionMock).toEqual(
       expect.objectContaining({
@@ -15,7 +15,7 @@ describe('Question mock entity', () => {
   });
 
   it('Should update question mock', () => {
-    const updatedQuestionMock = updateQuestionMock(createdFakeQuestionMock());
+    const updatedQuestionMock = updateQuestionMock(createFakeQuestionMock());
 
     expect(updatedQuestionMock).toEqual(
       expect.objectContaining({
@@ -53,19 +53,19 @@ describe('Question mock entity', () => {
   });
 
   it('Should throw errors on create', () => {
-    const undefQuestionId = createdFakeQuestionMock({ questionId: undefined });
+    const undefQuestionId = createFakeQuestionMock({ questionId: undefined });
 
     expect(() => createQuestionMock(undefQuestionId)).toThrow(
       'Question mock must have a question id.'
     );
 
-    const undefMockId = createdFakeQuestionMock({ mockId: undefined });
+    const undefMockId = createFakeQuestionMock({ mockId: undefined });
 
     expect(() => createQuestionMock(undefMockId)).toThrow(
       'Question mock must have a mock id.'
     );
 
-    const invalidQuestionId = createdFakeQuestionMock({
+    const invalidQuestionId = createFakeQuestionMock({
       questionId: 'not_number',
     });
 
@@ -75,13 +75,13 @@ describe('Question mock entity', () => {
   });
 
   it('Should throw errors on update', () => {
-    const nullQuestionId = createdFakeQuestionMock({ questionId: null });
+    const nullQuestionId = createFakeQuestionMock({ questionId: null });
 
     expect(() => updateQuestionMock(nullQuestionId)).toThrow(
       'Question mock must have a valid question id.'
     );
 
-    const nullMockId = createdFakeQuestionMock({ mockId: null });
+    const nullMockId = createFakeQuestionMock({ mockId: null });
 
     expect(() => updateQuestionMock(nullMockId)).toThrow(
       'Question mock must have a valid mock id.'
