@@ -26,7 +26,7 @@ export default function buildAlternative({ CustomError }) {
         entity: 'alternative',
       });
 
-    if (!questionId)
+    if (!questionId && questionId !== 0)
       throw new CustomError({
         message: 'Alternative must have a question id.',
         code: 'undefined',
@@ -62,7 +62,7 @@ export default function buildAlternative({ CustomError }) {
         entity: 'alternative',
       });
 
-    if (questionId !== undefined) {
+    if (questionId !== undefined && questionId !== 0) {
       if (!questionId)
         throw new CustomError({
           message: 'Alternative must have a valid question id.',

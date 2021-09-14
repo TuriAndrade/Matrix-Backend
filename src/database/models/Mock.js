@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Mock.associate = (models) => {
     Mock.hasMany(models.UserMock);
+    Mock.hasMany(models.QuestionMock);
   };
 
   return Mock;

@@ -58,7 +58,7 @@ export default function buildStudyHistory({ CustomError }) {
         attr: 'level',
         entity: 'studyHistory',
       });
-    if (!userId)
+    if (!userId && userId !== 0)
       throw new CustomError({
         message: 'Study history must have a user id.',
         code: 'undefined',
@@ -124,7 +124,7 @@ export default function buildStudyHistory({ CustomError }) {
       else checkLevel(level);
     }
 
-    if (userId !== undefined) {
+    if (userId !== undefined && userId !== 0) {
       if (!userId)
         throw new CustomError({
           message: 'Study history must have a valid user id.',

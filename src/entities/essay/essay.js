@@ -54,21 +54,21 @@ export default function buildEssay({ CustomError }) {
         attr: 'title',
         entity: 'essay',
       });
-    if (grade !== null && !grade)
+    if (grade !== null && !grade && grade !== 0)
       throw new CustomError({
         message: 'Essay must have a valid grade.',
         code: 'invalid',
         attr: 'grade',
         entity: 'essay',
       });
-    if (!topicId)
+    if (!topicId && topicId !== 0)
       throw new CustomError({
         message: 'Essay must have a topic id.',
         code: 'undefined',
         attr: 'topicId',
         entity: 'essay',
       });
-    if (!userId)
+    if (!userId && userId !== 0)
       throw new CustomError({
         message: 'Essay must have a user id.',
         code: 'undefined',
@@ -117,7 +117,7 @@ export default function buildEssay({ CustomError }) {
       else checkTitle(title);
     }
 
-    if (grade !== undefined && grade !== null) {
+    if (grade !== undefined && grade !== null && grade !== 0) {
       if (!grade)
         throw new CustomError({
           message: 'Essay must have a valid grade.',
@@ -128,7 +128,7 @@ export default function buildEssay({ CustomError }) {
       else checkGrade(grade);
     }
 
-    if (topicId !== undefined) {
+    if (topicId !== undefined && topicId !== 0) {
       if (!topicId)
         throw new CustomError({
           message: 'Essay must have a valid topic id.',
@@ -139,7 +139,7 @@ export default function buildEssay({ CustomError }) {
       else checkTopicId(topicId);
     }
 
-    if (userId !== undefined) {
+    if (userId !== undefined && userId !== 0) {
       if (!userId)
         throw new CustomError({
           message: 'Essay must have a valid user id.',

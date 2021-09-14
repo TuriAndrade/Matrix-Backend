@@ -20,7 +20,7 @@ export default function buildUserMock({ CustomError }) {
   }
 
   function createUserMock({ userId, mockId }) {
-    if (!userId)
+    if (!userId && userId !== 0)
       throw new CustomError({
         message: 'User mock must have a user id.',
         code: 'undefined',
@@ -28,7 +28,7 @@ export default function buildUserMock({ CustomError }) {
         entity: 'userMock',
       });
 
-    if (!mockId)
+    if (!mockId && mockId !== 0)
       throw new CustomError({
         message: 'User mock must have a mock id.',
         code: 'undefined',
@@ -47,7 +47,7 @@ export default function buildUserMock({ CustomError }) {
   }
 
   function updateUserMock({ userId, mockId }) {
-    if (userId !== undefined) {
+    if (userId !== undefined && userId !== 0) {
       if (!userId)
         throw new CustomError({
           message: 'User mock must have a valid user id.',
@@ -58,7 +58,7 @@ export default function buildUserMock({ CustomError }) {
       else checkUserId(userId);
     }
 
-    if (mockId !== undefined) {
+    if (mockId !== undefined && mockId !== 0) {
       if (!mockId)
         throw new CustomError({
           message: 'User mock must have a valid mock id.',
