@@ -1,10 +1,10 @@
 export default function buildEssayDb({ db }) {
   async function create(attributes) {
-    return db.Essay.create(attributes);
+    return db.essay.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.Essay.destroy({
+    return db.essay.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildEssayDb({ db }) {
   }
 
   async function findByUserId({ userId }) {
-    const essays = await db.Essay.findAll({
+    const essays = await db.essay.findAll({
       where: {
         userId,
       },
@@ -22,7 +22,7 @@ export default function buildEssayDb({ db }) {
   }
 
   async function findByTopicId({ topicId }) {
-    const essays = await db.Essay.findAll({
+    const essays = await db.essay.findAll({
       where: {
         topicId,
       },
@@ -32,7 +32,7 @@ export default function buildEssayDb({ db }) {
   }
 
   async function findByUserAndTopicIds({ userId, topicId }) {
-    const essays = await db.Essay.findAll({
+    const essays = await db.essay.findAll({
       where: {
         topicId,
         userId,
@@ -43,7 +43,7 @@ export default function buildEssayDb({ db }) {
   }
 
   async function updateById({ id, ...attributes }) {
-    return db.Essay.update(
+    return db.essay.update(
       { ...attributes },
       {
         where: {

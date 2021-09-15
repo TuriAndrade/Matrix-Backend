@@ -1,10 +1,10 @@
 export default function buildChosenAlternativeDb({ db }) {
   async function create(attributes) {
-    return db.ChosenAlternative.create(attributes);
+    return db.chosenAlternative.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.ChosenAlternative.destroy({
+    return db.chosenAlternative.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildChosenAlternativeDb({ db }) {
   }
 
   async function findByUserMockId({ userMockId }) {
-    const chosenAlternatives = await db.ChosenAlternative.findAll({
+    const chosenAlternatives = await db.chosenAlternative.findAll({
       where: {
         userMockId,
       },
@@ -22,7 +22,7 @@ export default function buildChosenAlternativeDb({ db }) {
   }
 
   async function findByUserMockAndQuestionIds({ userMockId, questionId }) {
-    const chosenAlternative = await db.ChosenAlternative.findOne({
+    const chosenAlternative = await db.chosenAlternative.findOne({
       where: {
         userMockId,
         questionId,

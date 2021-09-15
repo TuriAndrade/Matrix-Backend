@@ -1,10 +1,10 @@
 export default function buildQuestionMockDb({ db }) {
   async function create(attributes) {
-    return db.QuestionMock.create(attributes);
+    return db.questionMock.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.QuestionMock.destroy({
+    return db.questionMock.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildQuestionMockDb({ db }) {
   }
 
   async function findByQuestionId({ questionId }) {
-    const questionMocks = await db.QuestionMock.findAll({
+    const questionMocks = await db.questionMock.findAll({
       where: {
         questionId,
       },
@@ -22,7 +22,7 @@ export default function buildQuestionMockDb({ db }) {
   }
 
   async function findByMockId({ mockId }) {
-    const questionMocks = await db.QuestionMock.findAll({
+    const questionMocks = await db.questionMock.findAll({
       where: {
         mockId,
       },
@@ -32,7 +32,7 @@ export default function buildQuestionMockDb({ db }) {
   }
 
   async function findByQuestionAndMockIds({ questionId, mockId }) {
-    const questionMocks = await db.QuestionMock.findAll({
+    const questionMocks = await db.questionMock.findAll({
       where: {
         mockId,
         questionId,

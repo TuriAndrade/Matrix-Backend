@@ -1,10 +1,10 @@
 export default function buildStudyHistoryDb({ db }) {
   async function create(attributes) {
-    return db.StudyHistory.create(attributes);
+    return db.studyHistory.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.StudyHistory.destroy({
+    return db.studyHistory.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildStudyHistoryDb({ db }) {
   }
 
   async function findByUserId({ userId }) {
-    const studyHistories = await db.StudyHistory.findAll({
+    const studyHistories = await db.studyHistory.findAll({
       where: {
         userId,
       },
@@ -22,7 +22,7 @@ export default function buildStudyHistoryDb({ db }) {
   }
 
   async function updateById({ id, ...attributes }) {
-    return db.StudyHistory.update(
+    return db.studyHistory.update(
       { ...attributes },
       {
         where: {

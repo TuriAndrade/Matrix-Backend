@@ -1,10 +1,10 @@
 export default function buildTopicDb({ db }) {
   async function create(attributes) {
-    return db.Topic.create(attributes);
+    return db.topic.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.Topic.destroy({
+    return db.topic.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildTopicDb({ db }) {
   }
 
   async function findById({ id }) {
-    const topic = await db.Topic.findOne({
+    const topic = await db.topic.findOne({
       where: {
         id,
       },
@@ -22,7 +22,7 @@ export default function buildTopicDb({ db }) {
   }
 
   async function updateById({ id, ...attributes }) {
-    return db.Topic.update(
+    return db.topic.update(
       { ...attributes },
       {
         where: {

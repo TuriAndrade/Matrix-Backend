@@ -8,7 +8,7 @@ import db from '../../src/database/models';
 export async function insertUser() {
   const user = createFakeUser();
 
-  const createdUser = await db.User.create(user);
+  const createdUser = await db.user.create(user);
 
   return createdUser;
 }
@@ -20,13 +20,13 @@ export async function insertUsers(n = 10) {
     users.push(createFakeUser());
   }
 
-  return Promise.all(users.map((user) => db.User.create(user)));
+  return Promise.all(users.map((user) => db.user.create(user)));
 }
 
 export async function insertTopic() {
   const topic = createFakeTopic();
 
-  const createdTopic = await db.Topic.create(topic);
+  const createdTopic = await db.topic.create(topic);
 
   return createdTopic;
 }
@@ -38,13 +38,13 @@ export async function insertTopics(n = 10) {
     topics.push(createFakeTopic());
   }
 
-  return Promise.all(topics.map((topic) => db.Topic.create(topic)));
+  return Promise.all(topics.map((topic) => db.topic.create(topic)));
 }
 
 export async function insertMock() {
   const mock = createFakeMock();
 
-  const createdMock = await db.Mock.create(mock);
+  const createdMock = await db.mock.create(mock);
 
   return createdMock;
 }
@@ -56,13 +56,13 @@ export async function insertMocks(n = 10) {
     mocks.push(createFakeMock());
   }
 
-  return Promise.all(mocks.map((mock) => db.Mock.create(mock)));
+  return Promise.all(mocks.map((mock) => db.mock.create(mock)));
 }
 
 export async function insertQuestion() {
   const question = createFakeQuestion();
 
-  const createdQuestion = await db.Question.create(question);
+  const createdQuestion = await db.question.create(question);
 
   return createdQuestion;
 }
@@ -74,7 +74,7 @@ export async function insertQuestions(n = 10) {
     questions.push(createFakeQuestion());
   }
 
-  return Promise.all(questions.map((question) => db.Question.create(question)));
+  return Promise.all(questions.map((question) => db.question.create(question)));
 }
 
 export async function insertUserMock() {
@@ -83,7 +83,7 @@ export async function insertUserMock() {
 
   const userMock = createFakeUserMock({ userId: user.id, mockId: mock.id });
 
-  const createdUserMock = await db.UserMock.create(userMock);
+  const createdUserMock = await db.userMock.create(userMock);
 
   return createdUserMock;
 }
@@ -100,5 +100,5 @@ export async function insertUserMocks(n = 10) {
     );
   }
 
-  return Promise.all(userMocks.map((userMock) => db.UserMock.create(userMock)));
+  return Promise.all(userMocks.map((userMock) => db.userMock.create(userMock)));
 }

@@ -1,10 +1,10 @@
 export default function buildQuestionDb({ db }) {
   async function create(attributes) {
-    return db.Question.create(attributes);
+    return db.question.create(attributes);
   }
 
   async function findById({ id }) {
-    const question = await db.Question.findOne({
+    const question = await db.question.findOne({
       where: {
         id,
       },
@@ -14,7 +14,7 @@ export default function buildQuestionDb({ db }) {
   }
 
   async function deleteById({ id }) {
-    return db.Question.destroy({
+    return db.question.destroy({
       where: {
         id,
       },
@@ -22,7 +22,7 @@ export default function buildQuestionDb({ db }) {
   }
 
   async function updateById({ id, ...attributes }) {
-    return db.Question.update(
+    return db.question.update(
       { ...attributes },
       {
         where: {

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const StudyHistory = sequelize.define('StudyHistory', {
+  const StudyHistory = sequelize.define('studyHistory', {
     subject: DataTypes.STRING,
     hasStudied: DataTypes.BOOLEAN,
     discipline: DataTypes.STRING,
@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   StudyHistory.associate = (models) => {
-    StudyHistory.belongsTo(models.User, { foreignKey: 'userId' });
+    StudyHistory.belongsTo(models.user, { foreignKey: 'userId' });
   };
 
   return StudyHistory;

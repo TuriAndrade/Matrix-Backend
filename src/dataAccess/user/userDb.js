@@ -1,10 +1,10 @@
 export default function buildUserDb({ db }) {
   async function create(attributes) {
-    return db.User.create(attributes);
+    return db.user.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.User.destroy({
+    return db.user.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildUserDb({ db }) {
   }
 
   async function findByUsername({ username }) {
-    const user = await db.User.findOne({
+    const user = await db.user.findOne({
       where: {
         username,
       },
@@ -22,7 +22,7 @@ export default function buildUserDb({ db }) {
   }
 
   async function updateById({ id, ...attributes }) {
-    return db.User.update(
+    return db.user.update(
       { ...attributes },
       {
         where: {

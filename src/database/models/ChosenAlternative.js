@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  const ChosenAlternative = sequelize.define('ChosenAlternative', {
+  const ChosenAlternative = sequelize.define('chosenAlternative', {
     alternativeId: DataTypes.INTEGER,
     questionId: DataTypes.INTEGER,
   });
 
   ChosenAlternative.associate = (models) => {
-    ChosenAlternative.belongsTo(models.UserMock, { foreignKey: 'userMockId' });
+    ChosenAlternative.belongsTo(models.userMock, { foreignKey: 'userMockId' });
   };
 
   return ChosenAlternative;

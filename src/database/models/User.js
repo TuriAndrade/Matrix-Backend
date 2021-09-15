@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    'User',
+    'user',
     {
       username: DataTypes.STRING,
       password: DataTypes.VIRTUAL,
@@ -29,9 +29,10 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = (models) => {
-    User.hasMany(models.StudyHistory);
-    User.hasMany(models.Essay);
-    User.hasMany(models.UserMock);
+    User.hasMany(models.studyHistory);
+    User.hasMany(models.essay);
+    User.hasMany(models.userMock);
+    User.hasOne(models.studentInfo);
   };
 
   return User;

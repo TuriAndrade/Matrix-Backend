@@ -1,10 +1,10 @@
 export default function buildAlternativeDb({ db }) {
   async function create(attributes) {
-    return db.Alternative.create(attributes);
+    return db.alternative.create(attributes);
   }
 
   async function findById({ id }) {
-    const alternative = await db.Alternative.findOne({
+    const alternative = await db.alternative.findOne({
       where: {
         id,
       },
@@ -14,7 +14,7 @@ export default function buildAlternativeDb({ db }) {
   }
 
   async function findByQuestionId({ questionId, isCorrect = undefined }) {
-    const alternatives = await db.Alternative.findAll({
+    const alternatives = await db.alternative.findAll({
       where:
         isCorrect === undefined
           ? {
@@ -30,7 +30,7 @@ export default function buildAlternativeDb({ db }) {
   }
 
   async function deleteById({ id }) {
-    return db.Alternative.destroy({
+    return db.alternative.destroy({
       where: {
         id,
       },
@@ -38,7 +38,7 @@ export default function buildAlternativeDb({ db }) {
   }
 
   async function updateById({ id, ...attributes }) {
-    return db.Alternative.update(
+    return db.alternative.update(
       { ...attributes },
       {
         where: {

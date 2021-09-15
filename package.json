@@ -9,7 +9,7 @@
     "dev": "SET NODE_ENV=dev&nodemon -r sucrase/register src/index.js",
     "format": "prettier --write \"{,!(node_modules)/**/}*.{js,json}\"",
     "pretest": "SET NODE_ENV=test&sequelize db:migrate",
-    "test": "SET NODE_ENV=test&jest --runInBand",
+    "test": "SET NODE_ENV=test&jest --runInBand --forceExit",
     "posttest": "SET NODE_ENV=test&sequelize db:migrate:undo:all"
   },
   "author": "",

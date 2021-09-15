@@ -1,10 +1,10 @@
 export default function buildUserMockDb({ db }) {
   async function create(attributes) {
-    return db.UserMock.create(attributes);
+    return db.userMock.create(attributes);
   }
 
   async function deleteById({ id }) {
-    return db.UserMock.destroy({
+    return db.userMock.destroy({
       where: {
         id,
       },
@@ -12,7 +12,7 @@ export default function buildUserMockDb({ db }) {
   }
 
   async function findByUserId({ userId }) {
-    const userMocks = await db.UserMock.findAll({
+    const userMocks = await db.userMock.findAll({
       where: {
         userId,
       },
@@ -22,7 +22,7 @@ export default function buildUserMockDb({ db }) {
   }
 
   async function findByMockId({ mockId }) {
-    const userMocks = await db.UserMock.findAll({
+    const userMocks = await db.userMock.findAll({
       where: {
         mockId,
       },
@@ -32,7 +32,7 @@ export default function buildUserMockDb({ db }) {
   }
 
   async function findByUserAndMockIds({ userId, mockId }) {
-    const userMocks = await db.UserMock.findAll({
+    const userMocks = await db.userMock.findAll({
       where: {
         mockId,
         userId,

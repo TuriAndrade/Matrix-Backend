@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Mock = sequelize.define('Mock', {
+  const Mock = sequelize.define('mock', {
     name: DataTypes.STRING,
     exam: DataTypes.STRING,
     subject: DataTypes.STRING,
@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Mock.associate = (models) => {
-    Mock.hasMany(models.UserMock);
-    Mock.hasMany(models.QuestionMock);
+    Mock.hasMany(models.userMock);
+    Mock.hasMany(models.questionMock);
   };
 
   return Mock;
