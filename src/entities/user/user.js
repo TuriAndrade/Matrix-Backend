@@ -63,6 +63,13 @@ export default function buildUser({
         attr: 'email',
         entity: 'user',
       });
+    else if (email.length > 300)
+      throw new CustomError({
+        message: 'User must have a email with at most 300 characters.',
+        code: 'big',
+        attr: 'email',
+        entity: 'user',
+      });
   }
 
   function checkRole(role) {
