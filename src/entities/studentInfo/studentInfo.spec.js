@@ -50,7 +50,7 @@ describe('Student info entity', () => {
     );
 
     const updatedSchoolYearAndSchoolType = updateStudentInfo({
-      schoolType: 'Ensino Médio Regular',
+      schoolType: 'EMR',
       schoolYear: 3,
     });
 

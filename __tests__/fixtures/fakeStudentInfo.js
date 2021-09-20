@@ -1,10 +1,5 @@
 export default function createFakeStudentInfo(overrides) {
-  const schoolTypes = [
-    'Ensino Médio Regular',
-    'Ensino Médio Integrado',
-    'Educação de Jovens e Adultos',
-    'Outro',
-  ];
+  const schoolTypes = ['EMR', 'EMI', 'EJA', 'Outro'];
 
   const federativeUnits = [
     'AC',

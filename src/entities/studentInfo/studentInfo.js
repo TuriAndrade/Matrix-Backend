@@ -30,12 +30,7 @@ export default function buildStudentInfo({ CustomError }) {
   }
 
   function checkSchoolType(schoolType) {
-    const allowedTypes = [
-      'Ensino Médio Regular',
-      'Ensino Médio Integrado',
-      'Educação de Jovens e Adultos',
-      'Outro',
-    ];
+    const allowedTypes = ['EMR', 'EMI', 'EJA', 'Outro'];
 
     if (!allowedTypes.includes(schoolType))
       throw new CustomError({
