@@ -1,7 +1,7 @@
-export default function buildTopic({ CustomError }) {
+export default function buildTopic({ EntityError }) {
   function checkName(name) {
     if (name.length < 8)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Topic must have a name with at least 8 characters.',
         code: 'small',
         attr: 'name',
@@ -9,7 +9,7 @@ export default function buildTopic({ CustomError }) {
       });
 
     if (name.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Topic must have a name with at most 100 characters.',
         code: 'big',
         attr: 'name',
@@ -19,14 +19,14 @@ export default function buildTopic({ CustomError }) {
 
   function createTopic({ link, name }) {
     if (!link)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Topic must have a link.',
         code: 'undefined',
         attr: 'link',
         entity: 'topic',
       });
     if (!name)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Topic must have a name.',
         code: 'undefined',
         attr: 'name',
@@ -47,7 +47,7 @@ export default function buildTopic({ CustomError }) {
 
   function updateTopic({ link, name }) {
     if (link !== undefined && !link)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Topic must have a valid link.',
         code: 'invalid',
         attr: 'link',
@@ -56,7 +56,7 @@ export default function buildTopic({ CustomError }) {
 
     if (name !== undefined) {
       if (!name)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Topic must have a valid name.',
           code: 'invalid',
           attr: 'name',

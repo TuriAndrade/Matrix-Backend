@@ -1,35 +1,66 @@
-export default function buildStudyHistoryDb({ db }) {
+export default function buildStudyHistoryDb({ db, DatabaseError }) {
   async function create(attributes) {
-    return db.studyHistory.create(attributes);
+    try {
+      const created = await db.studyHistory.create(attributes);
+      return created;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studyHistory',
+      });
+    }
   }
 
   async function deleteById({ id }) {
-    return db.studyHistory.destroy({
-      where: {
-        id,
-      },
-    });
-  }
-
-  async function findByUserId({ userId }) {
-    const studyHistories = await db.studyHistory.findAll({
-      where: {
-        userId,
-      },
-    });
-
-    return studyHistories;
-  }
-
-  async function updateById({ id, ...attributes }) {
-    return db.studyHistory.update(
-      { ...attributes },
-      {
+    try {
+      const deleted = await db.studyHistory.destroy({
         where: {
           id,
         },
-      }
-    );
+      });
+      return deleted;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studyHistory',
+      });
+    }
+  }
+
+  async function findByUserId({ userId }) {
+    try {
+      const studyHistories = await db.studyHistory.findAll({
+        where: {
+          userId,
+        },
+      });
+
+      return studyHistories;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studyHistory',
+      });
+    }
+  }
+
+  async function updateById({ id, ...attributes }) {
+    try {
+      const updated = await db.studyHistory.update(
+        { ...attributes },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      return updated;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studyHistory',
+      });
+    }
   }
 
   return {

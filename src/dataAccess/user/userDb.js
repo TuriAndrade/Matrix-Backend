@@ -1,35 +1,65 @@
-export default function buildUserDb({ db }) {
+export default function buildUserDb({ db, DatabaseError }) {
   async function create(attributes) {
-    return db.user.create(attributes);
+    try {
+      const created = await db.user.create(attributes);
+      return created;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'user',
+      });
+    }
   }
 
   async function deleteById({ id }) {
-    return db.user.destroy({
-      where: {
-        id,
-      },
-    });
-  }
-
-  async function findByUsername({ username }) {
-    const user = await db.user.findOne({
-      where: {
-        username,
-      },
-    });
-
-    return user;
-  }
-
-  async function updateById({ id, ...attributes }) {
-    return db.user.update(
-      { ...attributes },
-      {
+    try {
+      const deleted = await db.user.destroy({
         where: {
           id,
         },
-      }
-    );
+      });
+      return deleted;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'user',
+      });
+    }
+  }
+
+  async function findByUsername({ username }) {
+    try {
+      const user = await db.user.findOne({
+        where: {
+          username,
+        },
+      });
+      return user;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'user',
+      });
+    }
+  }
+
+  async function updateById({ id, ...attributes }) {
+    try {
+      const updated = await db.user.update(
+        { ...attributes },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      return updated;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'user',
+      });
+    }
   }
 
   return { create, deleteById, findByUsername, updateById };

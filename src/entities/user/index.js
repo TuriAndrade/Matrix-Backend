@@ -10,5 +10,5 @@ export const { createUser, updateUser } = buildUser({
   usernameRegexTest,
   nameRegexTest,
   emailRegexTest,
-  CustomError: EntityError,
+  EntityError,
 });

@@ -1,7 +1,7 @@
-export default function buildEssay({ CustomError }) {
+export default function buildEssay({ EntityError }) {
   function checkTitle(title) {
     if (title.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a title with at most 100 characters.',
         code: 'big',
         attr: 'title',
@@ -11,7 +11,7 @@ export default function buildEssay({ CustomError }) {
 
   function checkGrade(grade) {
     if (typeof grade !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a grade that is a number.',
         code: 'invalid',
         attr: 'grade',
@@ -21,7 +21,7 @@ export default function buildEssay({ CustomError }) {
 
   function checkUserId(userId) {
     if (typeof userId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a user id that is a number.',
         code: 'invalid',
         attr: 'userId',
@@ -31,7 +31,7 @@ export default function buildEssay({ CustomError }) {
 
   function checkTopicId(topicId) {
     if (typeof topicId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a topic id that is a number.',
         code: 'invalid',
         attr: 'topicId',
@@ -41,35 +41,35 @@ export default function buildEssay({ CustomError }) {
 
   function createEssay({ link, title, grade = null, topicId, userId }) {
     if (!link)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a link.',
         code: 'undefined',
         attr: 'link',
         entity: 'essay',
       });
     if (!title)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a title.',
         code: 'undefined',
         attr: 'title',
         entity: 'essay',
       });
     if (grade !== null && !grade && grade !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a valid grade.',
         code: 'invalid',
         attr: 'grade',
         entity: 'essay',
       });
     if (!topicId && topicId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a topic id.',
         code: 'undefined',
         attr: 'topicId',
         entity: 'essay',
       });
     if (!userId && userId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a user id.',
         code: 'undefined',
         attr: 'userId',
@@ -99,7 +99,7 @@ export default function buildEssay({ CustomError }) {
 
   function updateEssay({ link, title, grade, topicId, userId }) {
     if (link !== undefined && !link)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Essay must have a valid link.',
         code: 'invalid',
         attr: 'link',
@@ -108,7 +108,7 @@ export default function buildEssay({ CustomError }) {
 
     if (title !== undefined) {
       if (!title)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Essay must have a valid title.',
           code: 'invalid',
           attr: 'title',
@@ -119,7 +119,7 @@ export default function buildEssay({ CustomError }) {
 
     if (grade !== undefined && grade !== null && grade !== 0) {
       if (!grade)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Essay must have a valid grade.',
           code: 'invalid',
           attr: 'grade',
@@ -130,7 +130,7 @@ export default function buildEssay({ CustomError }) {
 
     if (topicId !== undefined && topicId !== 0) {
       if (!topicId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Essay must have a valid topic id.',
           code: 'invalid',
           attr: 'topicId',
@@ -141,7 +141,7 @@ export default function buildEssay({ CustomError }) {
 
     if (userId !== undefined && userId !== 0) {
       if (!userId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Essay must have a valid user id.',
           code: 'invalid',
           attr: 'userId',

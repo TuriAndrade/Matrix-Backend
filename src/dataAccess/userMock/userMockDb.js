@@ -1,45 +1,82 @@
-export default function buildUserMockDb({ db }) {
+export default function buildUserMockDb({ db, DatabaseError }) {
   async function create(attributes) {
-    return db.userMock.create(attributes);
+    try {
+      const created = await db.userMock.create(attributes);
+      return created;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'userMock',
+      });
+    }
   }
 
   async function deleteById({ id }) {
-    return db.userMock.destroy({
-      where: {
-        id,
-      },
-    });
+    try {
+      const deleted = await db.userMock.destroy({
+        where: {
+          id,
+        },
+      });
+      return deleted;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'userMock',
+      });
+    }
   }
 
   async function findByUserId({ userId }) {
-    const userMocks = await db.userMock.findAll({
-      where: {
-        userId,
-      },
-    });
+    try {
+      const userMocks = await db.userMock.findAll({
+        where: {
+          userId,
+        },
+      });
 
-    return userMocks;
+      return userMocks;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'userMock',
+      });
+    }
   }
 
   async function findByMockId({ mockId }) {
-    const userMocks = await db.userMock.findAll({
-      where: {
-        mockId,
-      },
-    });
+    try {
+      const userMocks = await db.userMock.findAll({
+        where: {
+          mockId,
+        },
+      });
 
-    return userMocks;
+      return userMocks;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'userMock',
+      });
+    }
   }
 
   async function findByUserAndMockIds({ userId, mockId }) {
-    const userMocks = await db.userMock.findAll({
-      where: {
-        mockId,
-        userId,
-      },
-    });
+    try {
+      const userMocks = await db.userMock.findAll({
+        where: {
+          mockId,
+          userId,
+        },
+      });
 
-    return userMocks;
+      return userMocks;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'userMock',
+      });
+    }
   }
 
   return {

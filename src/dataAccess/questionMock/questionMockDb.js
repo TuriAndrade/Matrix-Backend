@@ -1,45 +1,82 @@
-export default function buildQuestionMockDb({ db }) {
+export default function buildQuestionMockDb({ db, DatabaseError }) {
   async function create(attributes) {
-    return db.questionMock.create(attributes);
+    try {
+      const created = await db.questionMock.create(attributes);
+      return created;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'questionMock',
+      });
+    }
   }
 
   async function deleteById({ id }) {
-    return db.questionMock.destroy({
-      where: {
-        id,
-      },
-    });
+    try {
+      const deleted = await db.questionMock.destroy({
+        where: {
+          id,
+        },
+      });
+      return deleted;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'questionMock',
+      });
+    }
   }
 
   async function findByQuestionId({ questionId }) {
-    const questionMocks = await db.questionMock.findAll({
-      where: {
-        questionId,
-      },
-    });
+    try {
+      const questionMocks = await db.questionMock.findAll({
+        where: {
+          questionId,
+        },
+      });
 
-    return questionMocks;
+      return questionMocks;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'questionMock',
+      });
+    }
   }
 
   async function findByMockId({ mockId }) {
-    const questionMocks = await db.questionMock.findAll({
-      where: {
-        mockId,
-      },
-    });
+    try {
+      const questionMocks = await db.questionMock.findAll({
+        where: {
+          mockId,
+        },
+      });
 
-    return questionMocks;
+      return questionMocks;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'questionMock',
+      });
+    }
   }
 
   async function findByQuestionAndMockIds({ questionId, mockId }) {
-    const questionMocks = await db.questionMock.findAll({
-      where: {
-        mockId,
-        questionId,
-      },
-    });
+    try {
+      const questionMocks = await db.questionMock.findAll({
+        where: {
+          mockId,
+          questionId,
+        },
+      });
 
-    return questionMocks;
+      return questionMocks;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'questionMock',
+      });
+    }
   }
 
   return {

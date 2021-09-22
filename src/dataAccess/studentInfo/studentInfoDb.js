@@ -1,35 +1,66 @@
-export default function buildStudentInfoDb({ db }) {
+export default function buildStudentInfoDb({ db, DatabaseError }) {
   async function create(attributes) {
-    return db.studentInfo.create(attributes);
+    try {
+      const created = await db.studentInfo.create(attributes);
+      return created;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studentInfo',
+      });
+    }
   }
 
   async function deleteById({ id }) {
-    return db.studentInfo.destroy({
-      where: {
-        id,
-      },
-    });
-  }
-
-  async function findByUserId({ userId }) {
-    const studentInfo = await db.studentInfo.findOne({
-      where: {
-        userId,
-      },
-    });
-
-    return studentInfo;
-  }
-
-  async function updateById({ id, ...attributes }) {
-    return db.studentInfo.update(
-      { ...attributes },
-      {
+    try {
+      const deleted = await db.studentInfo.destroy({
         where: {
           id,
         },
-      }
-    );
+      });
+      return deleted;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studentInfo',
+      });
+    }
+  }
+
+  async function findByUserId({ userId }) {
+    try {
+      const studentInfo = await db.studentInfo.findOne({
+        where: {
+          userId,
+        },
+      });
+
+      return studentInfo;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studentInfo',
+      });
+    }
+  }
+
+  async function updateById({ id, ...attributes }) {
+    try {
+      const updated = await db.studentInfo.update(
+        { ...attributes },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      return updated;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'studentInfo',
+      });
+    }
   }
 
   return {

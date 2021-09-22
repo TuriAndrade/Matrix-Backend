@@ -1,56 +1,101 @@
-export default function buildEssayDb({ db }) {
+export default function buildEssayDb({ db, DatabaseError }) {
   async function create(attributes) {
-    return db.essay.create(attributes);
+    try {
+      const created = await db.essay.create(attributes);
+      return created;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'essay',
+      });
+    }
   }
 
   async function deleteById({ id }) {
-    return db.essay.destroy({
-      where: {
-        id,
-      },
-    });
-  }
-
-  async function findByUserId({ userId }) {
-    const essays = await db.essay.findAll({
-      where: {
-        userId,
-      },
-    });
-
-    return essays;
-  }
-
-  async function findByTopicId({ topicId }) {
-    const essays = await db.essay.findAll({
-      where: {
-        topicId,
-      },
-    });
-
-    return essays;
-  }
-
-  async function findByUserAndTopicIds({ userId, topicId }) {
-    const essays = await db.essay.findAll({
-      where: {
-        topicId,
-        userId,
-      },
-    });
-
-    return essays;
-  }
-
-  async function updateById({ id, ...attributes }) {
-    return db.essay.update(
-      { ...attributes },
-      {
+    try {
+      const deleted = await db.essay.destroy({
         where: {
           id,
         },
-      }
-    );
+      });
+      return deleted;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'essay',
+      });
+    }
+  }
+
+  async function findByUserId({ userId }) {
+    try {
+      const essays = await db.essay.findAll({
+        where: {
+          userId,
+        },
+      });
+
+      return essays;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'essay',
+      });
+    }
+  }
+
+  async function findByTopicId({ topicId }) {
+    try {
+      const essays = await db.essay.findAll({
+        where: {
+          topicId,
+        },
+      });
+
+      return essays;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'essay',
+      });
+    }
+  }
+
+  async function findByUserAndTopicIds({ userId, topicId }) {
+    try {
+      const essays = await db.essay.findAll({
+        where: {
+          topicId,
+          userId,
+        },
+      });
+
+      return essays;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'essay',
+      });
+    }
+  }
+
+  async function updateById({ id, ...attributes }) {
+    try {
+      const updated = await db.essay.update(
+        { ...attributes },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      return updated;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'essay',
+      });
+    }
   }
 
   return {

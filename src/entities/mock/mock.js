@@ -1,7 +1,7 @@
-export default function builMock({ CustomError }) {
+export default function builMock({ EntityError }) {
   function checkName(name) {
     if (name.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a name with at most 100 characters.',
         code: 'big',
         attr: 'name',
@@ -11,7 +11,7 @@ export default function builMock({ CustomError }) {
 
   function checkExam(exam) {
     if (exam.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a exam with at most 100 characters.',
         code: 'big',
         attr: 'exam',
@@ -21,7 +21,7 @@ export default function builMock({ CustomError }) {
 
   function checkSubject(subject) {
     if (subject.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a subject with at most 100 characters.',
         code: 'big',
         attr: 'subject',
@@ -31,7 +31,7 @@ export default function builMock({ CustomError }) {
 
   function checkDiscipline(discipline) {
     if (discipline.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a discipline with at most 100 characters.',
         code: 'big',
         attr: 'discipline',
@@ -41,7 +41,7 @@ export default function builMock({ CustomError }) {
 
   function checkLevel(level) {
     if (level.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a level with at most 100 characters.',
         code: 'big',
         attr: 'level',
@@ -57,7 +57,7 @@ export default function builMock({ CustomError }) {
     level = null,
   }) {
     if (!name)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a name.',
         code: 'undefined',
         attr: 'name',
@@ -65,7 +65,7 @@ export default function builMock({ CustomError }) {
       });
 
     if (exam !== null && !exam)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a valid exam.',
         code: 'invalid',
         attr: 'exam',
@@ -73,7 +73,7 @@ export default function builMock({ CustomError }) {
       });
 
     if (subject !== null && !subject)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a valid subject.',
         code: 'invalid',
         attr: 'subject',
@@ -81,7 +81,7 @@ export default function builMock({ CustomError }) {
       });
 
     if (discipline !== null && !discipline)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a valid discipline.',
         code: 'invalid',
         attr: 'discipline',
@@ -89,7 +89,7 @@ export default function builMock({ CustomError }) {
       });
 
     if (level !== null && !level)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a valid level.',
         code: 'invalid',
         attr: 'level',
@@ -126,7 +126,7 @@ export default function builMock({ CustomError }) {
     level = null,
   }) {
     if (name !== undefined && !name)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Mock must have a valid name.',
         code: 'invalid',
         attr: 'name',
@@ -135,7 +135,7 @@ export default function builMock({ CustomError }) {
 
     if (exam !== undefined && exam !== null) {
       if (!exam)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Mock must have a valid exam.',
           code: 'invalid',
           attr: 'exam',
@@ -146,7 +146,7 @@ export default function builMock({ CustomError }) {
 
     if (subject !== undefined && subject !== null) {
       if (!subject)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Mock must have a valid subject.',
           code: 'invalid',
           attr: 'subject',
@@ -157,7 +157,7 @@ export default function builMock({ CustomError }) {
 
     if (discipline !== undefined && discipline !== null) {
       if (!discipline)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Mock must have a valid discipline.',
           code: 'invalid',
           attr: 'discipline',
@@ -168,7 +168,7 @@ export default function builMock({ CustomError }) {
 
     if (level !== undefined && level !== null) {
       if (!level)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Mock must have a valid level.',
           code: 'invalid',
           attr: 'level',

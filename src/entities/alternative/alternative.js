@@ -1,7 +1,7 @@
-export default function buildAlternative({ CustomError }) {
+export default function buildAlternative({ EntityError }) {
   function checkQuestionId(questionId) {
     if (typeof questionId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Alternative must have a question id that is a number.',
         code: 'invalid',
         attr: 'questionId',
@@ -11,7 +11,7 @@ export default function buildAlternative({ CustomError }) {
 
   function createAlternative({ html, delta, isCorrect, questionId }) {
     if (!html)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Alternative must have a html.',
         code: 'undefined',
         attr: 'html',
@@ -19,7 +19,7 @@ export default function buildAlternative({ CustomError }) {
       });
 
     if (!delta)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Alternative must have a delta.',
         code: 'undefined',
         attr: 'delta',
@@ -27,7 +27,7 @@ export default function buildAlternative({ CustomError }) {
       });
 
     if (!questionId && questionId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Alternative must have a question id.',
         code: 'undefined',
         attr: 'questionId',
@@ -47,7 +47,7 @@ export default function buildAlternative({ CustomError }) {
 
   function updateAlternative({ html, delta, isCorrect, questionId }) {
     if (html !== undefined && !html)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Alternative must have a valid html.',
         code: 'invalid',
         attr: 'html',
@@ -55,7 +55,7 @@ export default function buildAlternative({ CustomError }) {
       });
 
     if (delta !== undefined && !delta)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Alternative must have a valid delta.',
         code: 'invalid',
         attr: 'delta',
@@ -64,7 +64,7 @@ export default function buildAlternative({ CustomError }) {
 
     if (questionId !== undefined && questionId !== 0) {
       if (!questionId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Alternative must have a valid question id.',
           code: 'invalid',
           attr: 'questionId',

@@ -1,7 +1,7 @@
-export default function buildQuestion({ CustomError }) {
+export default function buildQuestion({ EntityError }) {
   function createQuestion({ html, delta }) {
     if (!html)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question must have a html.',
         code: 'undefined',
         attr: 'html',
@@ -9,7 +9,7 @@ export default function buildQuestion({ CustomError }) {
       });
 
     if (!delta)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question must have a delta.',
         code: 'undefined',
         attr: 'delta',
@@ -25,7 +25,7 @@ export default function buildQuestion({ CustomError }) {
 
   function updateQuestion({ html, delta }) {
     if (html !== undefined && !html)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question must have a valid html.',
         code: 'invalid',
         attr: 'html',
@@ -33,7 +33,7 @@ export default function buildQuestion({ CustomError }) {
       });
 
     if (delta !== undefined && !delta)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question must have a valid delta.',
         code: 'invalid',
         attr: 'delta',

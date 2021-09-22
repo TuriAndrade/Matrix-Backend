@@ -1,7 +1,7 @@
-export default function buildStudyHistory({ CustomError }) {
+export default function buildStudyHistory({ EntityError }) {
   function checkUserId(userId) {
     if (typeof userId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a user id that is a number.',
         code: 'invalid',
         attr: 'userId',
@@ -11,7 +11,7 @@ export default function buildStudyHistory({ CustomError }) {
 
   function checkDiscipline(discipline) {
     if (typeof discipline.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message:
           'Study history must have a discipline with at most 100 characters',
         code: 'big',
@@ -22,7 +22,7 @@ export default function buildStudyHistory({ CustomError }) {
 
   function checkLevel(level) {
     if (typeof level.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a level with at most 100 characters',
         code: 'big',
         attr: 'level',
@@ -38,28 +38,28 @@ export default function buildStudyHistory({ CustomError }) {
     userId,
   }) {
     if (!subject)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a subject.',
         code: 'undefined',
         attr: 'subject',
         entity: 'studyHistory',
       });
     if (!discipline)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a discipline.',
         code: 'undefined',
         attr: 'discipline',
         entity: 'studyHistory',
       });
     if (level !== null && !level)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a valid level.',
         code: 'invalid',
         attr: 'level',
         entity: 'studyHistory',
       });
     if (!userId && userId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a user id.',
         code: 'undefined',
         attr: 'userId',
@@ -94,7 +94,7 @@ export default function buildStudyHistory({ CustomError }) {
     userId,
   }) {
     if (subject !== undefined && !subject) {
-      throw new CustomError({
+      throw new EntityError({
         message: 'Study history must have a valid subject.',
         code: 'invalid',
         attr: 'subject',
@@ -104,7 +104,7 @@ export default function buildStudyHistory({ CustomError }) {
 
     if (discipline !== undefined) {
       if (!discipline)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Study history must have a valid discipline.',
           code: 'invalid',
           attr: 'discipline',
@@ -115,7 +115,7 @@ export default function buildStudyHistory({ CustomError }) {
 
     if (level !== undefined && level !== null) {
       if (!level)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Study history must have a valid level.',
           code: 'invalid',
           attr: 'level',
@@ -126,7 +126,7 @@ export default function buildStudyHistory({ CustomError }) {
 
     if (userId !== undefined && userId !== 0) {
       if (!userId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Study history must have a valid user id.',
           code: 'invalid',
           attr: 'userId',

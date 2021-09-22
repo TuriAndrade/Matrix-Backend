@@ -15,7 +15,8 @@
     "import/no-dynamic-require": "off",
     "global-require": "off",
     "import/named": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "max-classes-per-file": "off"
   },
   "plugins": ["prettier"]
 }

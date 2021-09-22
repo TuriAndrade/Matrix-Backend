@@ -2,25 +2,25 @@ export default function buildUser({
   usernameRegexTest,
   nameRegexTest,
   emailRegexTest,
-  CustomError,
+  EntityError,
 }) {
   function checkUsername(username) {
     if (!usernameRegexTest(username))
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a valid username.',
         code: 'invalid',
         attr: 'username',
         entity: 'user',
       });
     else if (username.length < 4)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a username with at least 4 characters.',
         code: 'small',
         attr: 'username',
         entity: 'user',
       });
     else if (username.length > 16)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a username with at most 16 characters.',
         code: 'big',
         attr: 'username',
@@ -30,7 +30,7 @@ export default function buildUser({
 
   function checkPassword(password) {
     if (password.length < 8)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a password with at least 8 characters.',
         code: 'small',
         attr: 'password',
@@ -40,14 +40,14 @@ export default function buildUser({
 
   function checkName(name) {
     if (!nameRegexTest(name))
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a valid name.',
         code: 'invalid',
         attr: 'name',
         entity: 'user',
       });
     else if (name.length > 100)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a name with at most 100 characters.',
         code: 'big',
         attr: 'name',
@@ -57,14 +57,14 @@ export default function buildUser({
 
   function checkEmail(email) {
     if (!emailRegexTest(email))
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a valid email.',
         code: 'invalid',
         attr: 'email',
         entity: 'user',
       });
     else if (email.length > 300)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a email with at most 300 characters.',
         code: 'big',
         attr: 'email',
@@ -76,7 +76,7 @@ export default function buildUser({
     const allowedRoles = ['student', 'admin', 'fullAdmin'];
 
     if (!allowedRoles.includes(role))
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a valid role.',
         code: 'invalid',
         attr: 'role',
@@ -93,42 +93,42 @@ export default function buildUser({
     picture = null,
   }) {
     if (!username)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a username.',
         code: 'undefined',
         attr: 'username',
         entity: 'user',
       });
     if (!password)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a password.',
         code: 'undefined',
         attr: 'password',
         entity: 'user',
       });
     if (!name)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a name.',
         code: 'undefined',
         attr: 'name',
         entity: 'user',
       });
     if (!email)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a email.',
         code: 'undefined',
         attr: 'email',
         entity: 'user',
       });
     if (!role)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a role.',
         code: 'undefined',
         attr: 'role',
         entity: 'user',
       });
     if (picture !== null && !picture)
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a valid picture.',
         code: 'invalid',
         attr: 'picture',
@@ -162,7 +162,7 @@ export default function buildUser({
   function updateUser({ username, password, name, email, role, picture }) {
     if (username !== undefined) {
       if (!username)
-        throw new CustomError({
+        throw new EntityError({
           message: 'User must have a valid username.',
           code: 'invalid',
           attr: 'username',
@@ -173,7 +173,7 @@ export default function buildUser({
 
     if (password !== undefined) {
       if (!password)
-        throw new CustomError({
+        throw new EntityError({
           message: 'User must have a valid password.',
           code: 'invalid',
           attr: 'password',
@@ -184,7 +184,7 @@ export default function buildUser({
 
     if (name !== undefined) {
       if (!name)
-        throw new CustomError({
+        throw new EntityError({
           message: 'User must have a valid name.',
           code: 'invalid',
           attr: 'name',
@@ -195,7 +195,7 @@ export default function buildUser({
 
     if (email !== undefined) {
       if (!email)
-        throw new CustomError({
+        throw new EntityError({
           message: 'User must have a valid email.',
           code: 'invalid',
           attr: 'email',
@@ -206,7 +206,7 @@ export default function buildUser({
 
     if (role !== undefined) {
       if (!role)
-        throw new CustomError({
+        throw new EntityError({
           message: 'User must have a valid role.',
           code: 'invalid',
           attr: 'role',
@@ -216,7 +216,7 @@ export default function buildUser({
     }
 
     if (picture !== undefined && picture !== null && !picture) {
-      throw new CustomError({
+      throw new EntityError({
         message: 'User must have a valid picture.',
         code: 'invalid',
         attr: 'picture',

@@ -1,7 +1,7 @@
-export default function buildQuestionMock({ CustomError }) {
+export default function buildQuestionMock({ EntityError }) {
   function checkQuestionId(questionId) {
     if (typeof questionId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question mock must have a question id that is a number.',
         code: 'invalid',
         attr: 'questionId',
@@ -11,7 +11,7 @@ export default function buildQuestionMock({ CustomError }) {
 
   function checkMockId(mockId) {
     if (typeof mockId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question mock must have a mock id that is a number.',
         code: 'invalid',
         attr: 'mockId',
@@ -21,7 +21,7 @@ export default function buildQuestionMock({ CustomError }) {
 
   function createQuestionMock({ questionId, mockId }) {
     if (!questionId && questionId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question mock must have a question id.',
         code: 'undefined',
         attr: 'questionId',
@@ -29,7 +29,7 @@ export default function buildQuestionMock({ CustomError }) {
       });
 
     if (!mockId && mockId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Question mock must have a mock id.',
         code: 'undefined',
         attr: 'mockId',
@@ -49,7 +49,7 @@ export default function buildQuestionMock({ CustomError }) {
   function updateQuestionMock({ questionId, mockId }) {
     if (questionId !== undefined && questionId !== 0) {
       if (!questionId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Question mock must have a valid question id.',
           code: 'invalid',
           attr: 'questionId',
@@ -60,7 +60,7 @@ export default function buildQuestionMock({ CustomError }) {
 
     if (mockId !== undefined && mockId !== 0) {
       if (!mockId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Question mock must have a valid mock id.',
           code: 'invalid',
           attr: 'mockId',

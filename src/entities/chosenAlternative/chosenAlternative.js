@@ -1,7 +1,7 @@
-export default function buildChosenAlternative({ CustomError }) {
+export default function buildChosenAlternative({ EntityError }) {
   function checkQuestionId(questionId) {
     if (typeof questionId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Chosen alternative must have a question id that is a number.',
         code: 'invalid',
         attr: 'questionId',
@@ -11,7 +11,7 @@ export default function buildChosenAlternative({ CustomError }) {
 
   function checkAlternativeId(alternativeId) {
     if (typeof alternativeId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message:
           'Chosen alternative must have an alternative id that is a number.',
         code: 'invalid',
@@ -22,7 +22,7 @@ export default function buildChosenAlternative({ CustomError }) {
 
   function checkUserMockId(userMockId) {
     if (typeof userMockId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message:
           'Chosen alternative must have a user mock id that is a number.',
         code: 'invalid',
@@ -33,7 +33,7 @@ export default function buildChosenAlternative({ CustomError }) {
 
   function createChosenAlternative({ questionId, alternativeId, userMockId }) {
     if (!questionId && questionId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Chosen alternative must have a question id.',
         code: 'undefined',
         attr: 'questionId',
@@ -41,7 +41,7 @@ export default function buildChosenAlternative({ CustomError }) {
       });
 
     if (!alternativeId && alternativeId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Chosen alternative must have an alternative id.',
         code: 'undefined',
         attr: 'alternativeId',
@@ -49,7 +49,7 @@ export default function buildChosenAlternative({ CustomError }) {
       });
 
     if (!userMockId && userMockId !== 0)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Chosen alternative must have a user mock id.',
         code: 'undefined',
         attr: 'userMockId',
@@ -71,7 +71,7 @@ export default function buildChosenAlternative({ CustomError }) {
   function updateChosenAlternative({ questionId, alternativeId, userMockId }) {
     if (questionId !== undefined && questionId !== 0) {
       if (!questionId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Chosen alternative must have a valid question id.',
           code: 'invalid',
           attr: 'questionId',
@@ -82,7 +82,7 @@ export default function buildChosenAlternative({ CustomError }) {
 
     if (alternativeId !== undefined && alternativeId !== 0) {
       if (!alternativeId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Chosen alternative must have a valid alternative id.',
           code: 'invalid',
           attr: 'alternativeId',
@@ -93,7 +93,7 @@ export default function buildChosenAlternative({ CustomError }) {
 
     if (userMockId !== undefined && userMockId !== 0) {
       if (!userMockId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Chosen alternative must have a valid user mock id.',
           code: 'invalid',
           attr: 'userMockId',

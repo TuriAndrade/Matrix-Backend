@@ -1,7 +1,7 @@
-export default function buildStudentInfo({ CustomError }) {
+export default function buildStudentInfo({ EntityError }) {
   function checkUserId(userId) {
     if (typeof userId !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a user id that is a number.',
         code: 'invalid',
         attr: 'userId',
@@ -11,7 +11,7 @@ export default function buildStudentInfo({ CustomError }) {
 
   function checkTimesReproved(timesReproved) {
     if (typeof timesReproved !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have times reproved that is a number.',
         code: 'invalid',
         attr: 'timesReproved',
@@ -21,7 +21,7 @@ export default function buildStudentInfo({ CustomError }) {
 
   function checkSchoolYear(schoolYear) {
     if (typeof schoolYear !== 'number')
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a school year that is a number.',
         code: 'invalid',
         attr: 'schoolYear',
@@ -33,7 +33,7 @@ export default function buildStudentInfo({ CustomError }) {
     const allowedTypes = ['EMR', 'EMI', 'EJA', 'Outro'];
 
     if (!allowedTypes.includes(schoolType))
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a valid school type.',
         code: 'invalid',
         attr: 'schoolType',
@@ -73,7 +73,7 @@ export default function buildStudentInfo({ CustomError }) {
     ];
 
     if (!allowedFederativeUnits.includes(federativeUnit))
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a valid federative unit.',
         code: 'invalid',
         attr: 'federativeUnit',
@@ -83,7 +83,7 @@ export default function buildStudentInfo({ CustomError }) {
 
   function checkWeakDisciplines(weakDisciplines) {
     if (!Array.isArray(weakDisciplines))
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have weak disciplines in an array.',
         code: 'invalid',
         attr: 'weakDisciplines',
@@ -107,7 +107,7 @@ export default function buildStudentInfo({ CustomError }) {
 
     weakDisciplines.forEach((weakDiscipline) => {
       if (!allowedDisciplines.includes(weakDiscipline))
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have valid weak disciplines.',
           code: 'invalid',
           attr: 'weakDisciplines',
@@ -125,42 +125,42 @@ export default function buildStudentInfo({ CustomError }) {
     userId,
   }) {
     if (timesReproved !== 0 && timesReproved !== null && !timesReproved)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have valid times reproved.',
         code: 'invalid',
         attr: 'timesReproved',
         entity: 'studentInfo',
       });
     if (schoolYear !== null && !schoolYear)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a valid school year.',
         code: 'invalid',
         attr: 'schoolYear',
         entity: 'studentInfo',
       });
     if (schoolType !== null && !schoolType)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a valid school type.',
         code: 'invalid',
         attr: 'schoolType',
         entity: 'studentInfo',
       });
     if (federativeUnit !== null && !federativeUnit)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a valid federative unit.',
         code: 'invalid',
         attr: 'federativeUnit',
         entity: 'studentInfo',
       });
     if (weakDisciplines !== null && !weakDisciplines)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have valid weak disciplines.',
         code: 'invalid',
         attr: 'weakDisciplines',
         entity: 'studentInfo',
       });
     if (userId !== 0 && !userId)
-      throw new CustomError({
+      throw new EntityError({
         message: 'Student info must have a user id.',
         code: 'undefined',
         attr: 'userId',
@@ -206,7 +206,7 @@ export default function buildStudentInfo({ CustomError }) {
       timesReproved !== 0
     ) {
       if (!timesReproved)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have valid times reproved.',
           code: 'invalid',
           attr: 'timesReproved',
@@ -217,7 +217,7 @@ export default function buildStudentInfo({ CustomError }) {
 
     if (schoolYear !== undefined && schoolYear !== null) {
       if (!schoolYear)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have a valid school year.',
           code: 'invalid',
           attr: 'schoolYear',
@@ -228,7 +228,7 @@ export default function buildStudentInfo({ CustomError }) {
 
     if (schoolType !== undefined && schoolType !== null) {
       if (!schoolType)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have a valid school type.',
           code: 'invalid',
           attr: 'schoolType',
@@ -239,7 +239,7 @@ export default function buildStudentInfo({ CustomError }) {
 
     if (federativeUnit !== undefined && federativeUnit !== null) {
       if (!federativeUnit)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have a valid federative unit.',
           code: 'invalid',
           attr: 'federativeUnit',
@@ -250,7 +250,7 @@ export default function buildStudentInfo({ CustomError }) {
 
     if (weakDisciplines !== undefined && weakDisciplines !== null) {
       if (!weakDisciplines)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have valid weak disciplines.',
           code: 'invalid',
           attr: 'weakDisciplines',
@@ -261,7 +261,7 @@ export default function buildStudentInfo({ CustomError }) {
 
     if (userId !== undefined && userId !== 0) {
       if (!userId)
-        throw new CustomError({
+        throw new EntityError({
           message: 'Student info must have a valid user id.',
           code: 'invalid',
           attr: 'userId',
