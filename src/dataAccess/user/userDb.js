@@ -43,6 +43,22 @@ export default function buildUserDb({ db, DatabaseError }) {
     }
   }
 
+  async function findByEmail({ email }) {
+    try {
+      const user = await db.user.findOne({
+        where: {
+          email,
+        },
+      });
+      return user;
+    } catch (e) {
+      throw new DatabaseError({
+        message: 'Database error.',
+        model: 'user',
+      });
+    }
+  }
+
   async function updateById({ id, ...attributes }) {
     try {
       const updated = await db.user.update(
@@ -62,5 +78,5 @@ export default function buildUserDb({ db, DatabaseError }) {
     }
   }
 
-  return { create, deleteById, findByUsername, updateById };
+  return { create, deleteById, findByUsername, findByEmail, updateById };
 }

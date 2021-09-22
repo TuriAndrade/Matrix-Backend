@@ -56,7 +56,7 @@ export default function createFakeStudentInfo(overrides) {
     timesReproved: Math.floor(Math.random() * 5),
     schoolYear: Math.floor(Math.random() * 3) + 1,
     schoolType: schoolTypes[Math.floor(Math.random() * 4)],
-    federativeUnit: federativeUnits[Math.floor(Math.random() * 28)],
+    federativeUnit: federativeUnits[Math.floor(Math.random() * 27)],
     weakDisciplines,
     userId: Math.floor(Math.random() * 1000),
   };

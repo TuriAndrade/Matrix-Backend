@@ -43,6 +43,18 @@ describe('User db', () => {
     expect(foundUser.id).toBe(createdUser.id);
   });
 
+  it('Should find user by email', async () => {
+    const user = createUser(createFakeUser());
+
+    const createdUser = await userDb.create(user.spread());
+
+    const foundUser = await userDb.findByEmail({
+      email: user.getEmail(),
+    });
+
+    expect(foundUser.id).toBe(createdUser.id);
+  });
+
   it('Should delete user by id', async () => {
     const user = createUser(createFakeUser());
 

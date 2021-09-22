@@ -4,16 +4,27 @@ export default function buildCreateAccount({
   DatabaseError,
 }) {
   return async function createAccount({ username, email, name, password }) {
-    const exists = await userDb.findByUsername({ username });
+    const usernameExists = await userDb.findByUsername({ username });
 
-    if (exists) {
+    if (usernameExists)
       throw new DatabaseError({
         message: 'User must have a unique username.',
         code: 'exists',
         attr: 'username',
         model: 'user',
+        statusCode: 409,
       });
-    }
+
+    const emailExists = await userDb.findByEmail({ email });
+
+    if (emailExists)
+      throw new DatabaseError({
+        message: 'User must have a unique email.',
+        code: 'exists',
+        attr: 'email',
+        model: 'user',
+        statusCode: 409,
+      });
 
     const user = createUser({
       username,
