@@ -7,6 +7,7 @@ export default function buildStudentInfoDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }
@@ -23,6 +24,7 @@ export default function buildStudentInfoDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }
@@ -40,6 +42,7 @@ export default function buildStudentInfoDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }
@@ -59,6 +62,7 @@ export default function buildStudentInfoDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }

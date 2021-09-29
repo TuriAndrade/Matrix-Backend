@@ -7,6 +7,7 @@ export default function buildAlternativeDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'alternative',
+        originError: e,
       });
     }
   }
@@ -24,6 +25,7 @@ export default function buildAlternativeDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'alternative',
+        originError: e,
       });
     }
   }
@@ -47,6 +49,7 @@ export default function buildAlternativeDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'alternative',
+        originError: e,
       });
     }
   }
@@ -63,6 +66,7 @@ export default function buildAlternativeDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'alternative',
+        originError: e,
       });
     }
   }
@@ -82,6 +86,7 @@ export default function buildAlternativeDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'alternative',
+        originError: e,
       });
     }
   }

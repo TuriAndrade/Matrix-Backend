@@ -7,6 +7,7 @@ export default function buildTopicDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }
@@ -23,6 +24,7 @@ export default function buildTopicDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }
@@ -39,6 +41,7 @@ export default function buildTopicDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }
@@ -58,6 +61,7 @@ export default function buildTopicDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'studentInfo',
+        originError: e,
       });
     }
   }

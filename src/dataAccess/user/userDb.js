@@ -7,6 +7,7 @@ export default function buildUserDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'user',
+        originError: e,
       });
     }
   }
@@ -23,6 +24,7 @@ export default function buildUserDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'user',
+        originError: e,
       });
     }
   }
@@ -39,6 +41,7 @@ export default function buildUserDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'user',
+        originError: e,
       });
     }
   }
@@ -55,6 +58,7 @@ export default function buildUserDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'user',
+        originError: e,
       });
     }
   }
@@ -74,6 +78,7 @@ export default function buildUserDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'user',
+        originError: e,
       });
     }
   }

@@ -7,6 +7,7 @@ export default function buildQuestionDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'question',
+        originError: e,
       });
     }
   }
@@ -24,6 +25,7 @@ export default function buildQuestionDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'question',
+        originError: e,
       });
     }
   }
@@ -40,6 +42,7 @@ export default function buildQuestionDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'question',
+        originError: e,
       });
     }
   }
@@ -59,6 +62,7 @@ export default function buildQuestionDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'question',
+        originError: e,
       });
     }
   }

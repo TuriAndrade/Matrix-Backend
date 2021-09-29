@@ -7,6 +7,7 @@ export default function buildUserMockDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'userMock',
+        originError: e,
       });
     }
   }
@@ -23,6 +24,7 @@ export default function buildUserMockDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'userMock',
+        originError: e,
       });
     }
   }
@@ -40,6 +42,7 @@ export default function buildUserMockDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'userMock',
+        originError: e,
       });
     }
   }
@@ -57,6 +60,7 @@ export default function buildUserMockDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'userMock',
+        originError: e,
       });
     }
   }
@@ -75,6 +79,7 @@ export default function buildUserMockDb({ db, DatabaseError }) {
       throw new DatabaseError({
         message: 'Database error.',
         model: 'userMock',
+        originError: e,
       });
     }
   }
