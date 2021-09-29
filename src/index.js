@@ -17,8 +17,6 @@ app.use(
 
 app.use(express.json());
 
-routeModules.forEach((module) => {
-  app.use(module);
-});
+routeModules.forEach((module) => app.use(module));
 
 app.listen(process.env.APP_PORT, process.env.APP_HOST);
