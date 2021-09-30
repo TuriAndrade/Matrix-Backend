@@ -1,9 +1,21 @@
 export default function buildCreateAccount({
   userDb,
+  studentInfoDb,
   createUser,
+  createStudentInfo,
   DatabaseError,
 }) {
-  return async function createAccount({ username, email, name, password }) {
+  return async function createAccount({
+    username,
+    email,
+    name,
+    password,
+    schoolYear,
+    schoolType,
+    timesReproved,
+    weakDisciplines,
+    federativeUnit,
+  }) {
     const usernameExists = await userDb.findByUsername({ username });
 
     if (usernameExists)
@@ -35,6 +47,18 @@ export default function buildCreateAccount({
     });
 
     const createdUser = await userDb.create(user.spread());
-    return { id: createdUser.id };
+
+    const studentInfo = createStudentInfo({
+      schoolYear,
+      schoolType,
+      timesReproved,
+      weakDisciplines,
+      federativeUnit,
+      userId: createdUser.id,
+    });
+
+    const createdStudentInfo = await studentInfoDb.create(studentInfo.spread());
+
+    return { userId: createdUser.id, studentInfoId: createdStudentInfo.id };
   };
 }

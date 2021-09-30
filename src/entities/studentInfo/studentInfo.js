@@ -124,41 +124,57 @@ export default function buildStudentInfo({ EntityError }) {
     weakDisciplines = null,
     userId,
   }) {
-    if (timesReproved !== 0 && timesReproved !== null && !timesReproved)
-      throw new EntityError({
-        message: 'Student info must have valid times reproved.',
-        code: 'invalid',
-        attr: 'timesReproved',
-        entity: 'studentInfo',
-      });
-    if (schoolYear !== null && !schoolYear)
-      throw new EntityError({
-        message: 'Student info must have a valid school year.',
-        code: 'invalid',
-        attr: 'schoolYear',
-        entity: 'studentInfo',
-      });
-    if (schoolType !== null && !schoolType)
-      throw new EntityError({
-        message: 'Student info must have a valid school type.',
-        code: 'invalid',
-        attr: 'schoolType',
-        entity: 'studentInfo',
-      });
-    if (federativeUnit !== null && !federativeUnit)
-      throw new EntityError({
-        message: 'Student info must have a valid federative unit.',
-        code: 'invalid',
-        attr: 'federativeUnit',
-        entity: 'studentInfo',
-      });
-    if (weakDisciplines !== null && !weakDisciplines)
-      throw new EntityError({
-        message: 'Student info must have valid weak disciplines.',
-        code: 'invalid',
-        attr: 'weakDisciplines',
-        entity: 'studentInfo',
-      });
+    if (timesReproved !== 0 && timesReproved !== null) {
+      if (!timesReproved)
+        throw new EntityError({
+          message: 'Student info must have valid times reproved.',
+          code: 'invalid',
+          attr: 'timesReproved',
+          entity: 'studentInfo',
+        });
+      else checkTimesReproved(timesReproved);
+    }
+    if (schoolYear !== null) {
+      if (!schoolYear)
+        throw new EntityError({
+          message: 'Student info must have a valid school year.',
+          code: 'invalid',
+          attr: 'schoolYear',
+          entity: 'studentInfo',
+        });
+      else checkSchoolYear(schoolYear);
+    }
+    if (schoolType !== null) {
+      if (!schoolType)
+        throw new EntityError({
+          message: 'Student info must have a valid school type.',
+          code: 'invalid',
+          attr: 'schoolType',
+          entity: 'studentInfo',
+        });
+      else checkSchoolType(schoolType);
+    }
+    if (federativeUnit !== null) {
+      if (!federativeUnit)
+        throw new EntityError({
+          message: 'Student info must have a valid federative unit.',
+          code: 'invalid',
+          attr: 'federativeUnit',
+          entity: 'studentInfo',
+        });
+      else checkFederativeUnit(federativeUnit);
+    }
+
+    if (weakDisciplines !== null) {
+      if (!weakDisciplines)
+        throw new EntityError({
+          message: 'Student info must have valid weak disciplines.',
+          code: 'invalid',
+          attr: 'weakDisciplines',
+          entity: 'studentInfo',
+        });
+      else checkWeakDisciplines(weakDisciplines);
+    }
     if (userId !== 0 && !userId)
       throw new EntityError({
         message: 'Student info must have a user id.',
@@ -167,11 +183,6 @@ export default function buildStudentInfo({ EntityError }) {
         entity: 'studentInfo',
       });
 
-    checkTimesReproved(timesReproved);
-    checkSchoolYear(schoolYear);
-    checkSchoolType(schoolType);
-    checkFederativeUnit(federativeUnit);
-    checkWeakDisciplines(weakDisciplines);
     checkUserId(userId);
 
     return Object.freeze({

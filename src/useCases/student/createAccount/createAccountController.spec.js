@@ -1,4 +1,5 @@
 import createFakeUser from '../../../../__tests__/fixtures/fakeUser';
+import createFakeStudentInfo from '../../../../__tests__/fixtures/fakeStudentInfo';
 import { insertUser } from '../../../../__tests__/utils/seed';
 import truncate from '../../../../__tests__/utils/truncate';
 import { createAccountController } from './index';
@@ -10,12 +11,13 @@ describe('Create account controller', () => {
 
   it('Should create account', async () => {
     const user = createFakeUser();
+    const studentInfo = createFakeStudentInfo();
 
     const request = {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: { ...user },
+      body: { ...user, ...studentInfo },
     };
 
     const response = await createAccountController(request);
@@ -26,7 +28,7 @@ describe('Create account controller', () => {
           'Content-Type': 'application/json',
         },
         statusCode: 200,
-        body: { id: expect.any(Number) },
+        body: { userId: expect.any(Number), studentInfoId: expect.any(Number) },
       })
     );
   });

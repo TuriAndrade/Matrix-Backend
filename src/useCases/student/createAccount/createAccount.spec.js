@@ -1,4 +1,5 @@
 import createFakeUser from '../../../../__tests__/fixtures/fakeUser';
+import createFakeStudentInfo from '../../../../__tests__/fixtures/fakeStudentInfo';
 import { insertUser } from '../../../../__tests__/utils/seed';
 import truncate from '../../../../__tests__/utils/truncate';
 import { createAccount } from './index';
@@ -10,9 +11,12 @@ describe('Create account', () => {
 
   it('Should create account', async () => {
     const user = createFakeUser();
-    const createdAccount = await createAccount({ ...user });
+    const studentInfo = createFakeStudentInfo({ userId: undefined });
 
-    expect(createdAccount.id).toEqual(expect.any(Number));
+    const createdAccount = await createAccount({ ...user, ...studentInfo });
+
+    expect(createdAccount.userId).toEqual(expect.any(Number));
+    expect(createdAccount.studentInfoId).toEqual(expect.any(Number));
   });
 
   it('Should throw errors creating account', async () => {
